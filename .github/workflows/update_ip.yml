@@ -40,6 +40,6 @@ jobs:
           if git diff --staged --quiet; then
             echo "No changes to commit."
           else
-            git commit -m "Auto update china_ip.txt: $(date +'%Y-%m-%d')"
+            git commit -m "自动更新 china_ip.txt: $(date +'%Y-%m-%d')"
             git push
           fi
