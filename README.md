@@ -40,5 +40,5 @@
 1.  进入 **Sub-Store** 界面，点击 `文件管理` (Files)。
 2.  点击左上角的 **+ 号**。
 3.  根据你的需求选择操作：
-    *   **Mihomo 用户**：将 `mihomo配置` 导入本地。
+    *   **Mihomo 用户**：将 `mihomo配置` 导入本地。建议使用这个[新的配置文件](https://github.com/iP3ter/sub-store-config/blob/main/new_remote.yaml)，原有配置文件，speedtest分流有问题。
     *   **Sing-box 用户**：将 `singbox配置` 导入本地。
