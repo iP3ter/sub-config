@@ -79,7 +79,6 @@ FilterFR: &FilterFR '^(?=.*(法国|FR|France|🇫🇷))^(?!.*(网站|地址|剩�
 FilterDE: &FilterDE '^(?=.*(德国|DE|Germany|🇩🇪))^(?!.*(网站|地址|剩余|过期|时间|有效|网址|禁止|邮箱|发布|客服|订阅|节点|落地|家宽|自建|×)).*$'
 FilterTW: &FilterTW '^(?=.*(台湾|TW|Taiwan|Wan|🇨🇳|🇨🇳))^(?!.*(网站|地址|剩余|过期|时间|有效|网址|禁止|邮箱|发布|客服|订阅|节点|落地|家宽|自建|×)).*$'
 FilterOthers: &FilterOthers '^(?!.*(🇭🇰|HK|Hong|香港|🇨🇳|TW|Taiwan|Wan|🇯🇵|JP|Japan|日本|🇸🇬|SG|Singapore|狮城|🇺🇸|US|United States|America|美国|🇩🇪|DE|Germany|德国|🇬🇧|UK|United Kingdom|英国|🇰🇷|KR|Korea|韩国|韓|🇫🇷|FR|France|法国)).*$'
-FilterSave: &FilterSave '^(?=.*((\s|-)0\.[0-9](×|x|X)|低倍率|省流|大流量)).*$'
 FilterLanding: &FilterLanding '^(?=.*((?i)落地|家宽|自建)).*$'
 FilterAll: &FilterAll '^(?=.*(.))(?!.*((?i)群|邀请|返利|循环|官网|客服|网站|网址|获取|订阅|流量|到期|机场|下次|版本|官址|备用|过期|已用|联系|邮箱|工单|贩卖|通知|倒卖|防止|国内|地址|频道|无法|说明|使用|提示|特别|访问|支持|教程|关注|更新|作者|加入|(\b(USE|USED|TOTAL|EXPIRE|EMAIL|Panel|Channel|Author)\b|(\d{4}-\d{2}-\d{2}|\d+G)))).*$'
 
@@ -96,12 +95,6 @@ proxy-groups:
   - {name: 自动选择, type: select, proxies: [香港节点, 日本节点, 韩国节点, 狮城节点, 美国节点, 英国节点, 法国节点, 德国节点, 台湾节点], url: https://www.apple.com/library/test/success.html, icon: https://testingcf.jsdelivr.net/gh/Orz-3/mini@master/Color/Urltest.png}
 
   # 特殊分组
-    # 省流前置（低倍率节点池自动测速）
-  - {name: 省流前置, <<: *Select, filter: *FilterSave, icon: https://testingcf.jsdelivr.net/gh/Orz-3/mini@master/Color/Urltest.png}
-
-    # 省流落地（两跳：低倍率前置 -> 落地节点后置）
-  - {name: 省流落地, type: relay, proxies: [省流前置, 落地选择], icon: https://testingcf.jsdelivr.net/gh/Orz-3/mini@master/Color/Final.png}
-
   - {name: 中继选择, <<: *Select, filter: *FilterAll, icon: https://testingcf.jsdelivr.net/gh/Orz-3/mini@master/Color/Final.png}
   - {name: 落地选择, <<: *Select, filter: *FilterLanding, icon: https://testingcf.jsdelivr.net/gh/Orz-3/mini@master/Color/Global.png}
 
@@ -291,14 +284,12 @@ rules:
   - RULE-SET,stream_non_ip,国外媒体
   - RULE-SET,telegram_non_ip,电报信息
   - RULE-SET,apple_cdn,DIRECT
-  - RULE-SET,download_domainset,省流落地
-  - RULE-SET,download_non_ip,省流落地
   - RULE-SET,microsoft_cdn_non_ip,DIRECT
   - RULE-SET,apple_cn_non_ip,DIRECT
   - RULE-SET,apple_services,苹果服务
   - RULE-SET,microsoft_non_ip,微软服务
 
-  ### 3) ⭐Speedtest 修复：必须在 cn / domestic 前
+  ### Speedtest 修复：必须在 cn / domestic 前
   - RULE-SET,networktest,节点选择
 
   - RULE-SET,global_non_ip,节点选择
